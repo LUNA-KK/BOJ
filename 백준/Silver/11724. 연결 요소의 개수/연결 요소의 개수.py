@@ -4,9 +4,9 @@ input = sys.stdin.readline
 
 # dfs 함수
 def dfs(graph, v, visited):
-    visited[v] = True
+    visited[v] = True # 노드 이름으로 방문 위치를 기록함
     for i in graph[v]:
-        if not visited[i]:
+        if not visited[i]: # visited[v]가 False 즉 아직 방문하지 않은 노드일 때
             dfs(graph, i, visited)
 
 n, m = map(int, input().split())
@@ -17,9 +17,9 @@ for i in range(m):
     graph[v].append(u)
 
 count = 0
-visited = [False] * (n+1)
+visited = [False] * (n+1) # 탐색을 boolean으로 표시함
 for i in range(1, n+1):
-    if not visited[i]:
+    if not visited[i]: # 방문하지 않은 곳
         dfs(graph, i, visited)
         count += 1 # dfs 한 번 끝날 때마다 count+1
 
